@@ -1,14 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import { DateRange } from 'react-day-picker'
-import { addDays } from 'date-fns/addDays'
+import { subDays } from 'date-fns/subDays'
 import { DateRangePicker } from '@/components/ui/DateRangePicker'
+import { format } from 'date-fns/format'
 
 export default function Home() {
-  const [dateRange, setDateRange] = useState<DateRange>({
-    from: new Date(2022, 0, 20),
-    to: addDays(new Date(2022, 0, 20), 20),
+  const [dateRange, setDateRange] = useState({
+    date_from: format(subDays(new Date(), 7), 'yyyy-MM-dd'),
+    date_to: format(new Date(), 'yyyy-MM-dd'),
   })
   return (
     <main className="flex min-h-screen flex-col items-center p-24 gap-8">
