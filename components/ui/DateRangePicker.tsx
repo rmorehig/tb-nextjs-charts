@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { CalendarIcon } from '@radix-ui/react-icons'
-import { addDays, format } from 'date-fns'
+import { format } from 'date-fns'
 import { DateRange } from 'react-day-picker'
 
 import { cn } from '@/lib/utils'
@@ -15,12 +15,16 @@ import {
 } from '@/components/ui/popover'
 
 export function DateRangePicker({
-  dateRange: date,
+  dateRange,
   onChange,
 }: {
-  dateRange: DateRange
-  onChange: (date: DateRange) => void
+  dateRange: { from: string; to: string }
+  onChange: (dateRange: { from: string; to: string }) => void
 }) {
+  const date: DateRange = {
+    from: new Date(dateRange.from),
+    to: new Date(dateRange.to),
+  }
   return (
     <div className={cn('grid gap-2')}>
       <Popover>
@@ -55,7 +59,13 @@ export function DateRangePicker({
             mode="range"
             defaultMonth={date?.from}
             selected={date}
-            onSelect={date => !!date && onChange(date)}
+            onSelect={date =>
+              !!date &&
+              onChange({
+                from: date.from ? format(date.from, 'yyyy-MM-dd') : '',
+                to: date.to ? format(date.to, 'yyyy-MM-dd') : '',
+              })
+            }
             numberOfMonths={2}
           />
         </PopoverContent>
