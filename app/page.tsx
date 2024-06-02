@@ -10,6 +10,8 @@ export default function Home() {
       <div className="flex justify-end w-full">
         <DateRangePicker dateRange={dateRange} onChange={setDateRange} />
       </div>
+
+      <div className="flex gap-8 w-full"></div>
     </main>
   )
 }
