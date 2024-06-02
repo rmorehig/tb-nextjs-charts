@@ -18,12 +18,12 @@ export function DateRangePicker({
   dateRange,
   onChange,
 }: {
-  dateRange: { from: string; to: string }
-  onChange: (dateRange: { from: string; to: string }) => void
+  dateRange: { date_from: string; date_to: string }
+  onChange: (dateRange: { date_from: string; date_to: string }) => void
 }) {
   const date: DateRange = {
-    from: new Date(dateRange.from),
-    to: new Date(dateRange.to),
+    from: new Date(dateRange.date_from),
+    to: new Date(dateRange.date_to),
   }
   return (
     <div className={cn('grid gap-2')}>
@@ -62,8 +62,8 @@ export function DateRangePicker({
             onSelect={date =>
               !!date &&
               onChange({
-                from: date.from ? format(date.from, 'yyyy-MM-dd') : '',
-                to: date.to ? format(date.to, 'yyyy-MM-dd') : '',
+                date_from: date.from ? format(date.from, 'yyyy-MM-dd') : '',
+                date_to: date.to ? format(date.to, 'yyyy-MM-dd') : '',
               })
             }
             numberOfMonths={2}
