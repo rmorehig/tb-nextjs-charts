@@ -9,7 +9,10 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function useDateRange() {
-  return useState({
+  return useState<{
+    date_from: string | undefined
+    date_to: string | undefined
+  }>({
     date_from: format(subDays(new Date(), 7), 'yyyy-MM-dd'),
     date_to: format(new Date(), 'yyyy-MM-dd'),
   })

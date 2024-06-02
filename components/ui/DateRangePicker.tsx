@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { CalendarIcon } from '@radix-ui/react-icons'
-import { format } from 'date-fns'
+import { format } from 'date-fns/format'
 import { DateRange } from 'react-day-picker'
 
 import { cn } from '@/lib/utils'
@@ -18,13 +18,17 @@ export function DateRangePicker({
   dateRange,
   onChange,
 }: {
-  dateRange: { date_from: string; date_to: string }
-  onChange: (dateRange: { date_from: string; date_to: string }) => void
+  dateRange: { date_from: string | undefined; date_to: string | undefined }
+  onChange: (dateRange: {
+    date_from: string | undefined
+    date_to: string | undefined
+  }) => void
 }) {
   const date: DateRange = {
-    from: new Date(dateRange.date_from),
-    to: new Date(dateRange.date_to),
+    from: dateRange.date_from ? new Date(dateRange.date_from) : undefined,
+    to: dateRange.date_to ? new Date(dateRange.date_to) : undefined,
   }
+
   return (
     <div className={cn('grid gap-2')}>
       <Popover>
@@ -60,10 +64,11 @@ export function DateRangePicker({
             defaultMonth={date?.from}
             selected={date}
             onSelect={date =>
-              !!date &&
               onChange({
-                date_from: date.from ? format(date.from, 'yyyy-MM-dd') : '',
-                date_to: date.to ? format(date.to, 'yyyy-MM-dd') : '',
+                date_from: date?.from
+                  ? format(date.from, 'yyyy-MM-dd')
+                  : undefined,
+                date_to: date?.to ? format(date.to, 'yyyy-MM-dd') : undefined,
               })
             }
             numberOfMonths={2}
