@@ -1,5 +1,8 @@
 'use client'
 
+import { TopDevices } from '@/components/TopDevices'
+import { TopPages } from '@/components/TopPages'
+import { UniqueVisitors } from '@/components/UniqueVisitors'
 import { DateRangePicker } from '@/components/ui/DateRangePicker'
 import { useDateRange } from '@/lib/utils'
 
@@ -10,8 +13,11 @@ export default function Home() {
       <div className="flex justify-end w-full">
         <DateRangePicker dateRange={dateRange} onChange={setDateRange} />
       </div>
-
-      <div className="flex gap-8 w-full"></div>
+      <UniqueVisitors {...dateRange} />
+      <div className="flex gap-8 w-full">
+        <TopDevices {...dateRange} />
+        <TopPages limit={4} {...dateRange} />
+      </div>
     </main>
   )
 }
