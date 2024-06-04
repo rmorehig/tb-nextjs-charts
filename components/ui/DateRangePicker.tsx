@@ -13,20 +13,18 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
+import { DateParams } from '@/lib/types'
 
 export function DateRangePicker({
-  dateRange,
+  dateParams,
   onChange,
 }: {
-  dateRange: { date_from: string | undefined; date_to: string | undefined }
-  onChange: (dateRange: {
-    date_from: string | undefined
-    date_to: string | undefined
-  }) => void
+  dateParams: DateParams
+  onChange: (dateParams: DateParams) => void
 }) {
   const date: DateRange = {
-    from: dateRange.date_from ? new Date(dateRange.date_from) : undefined,
-    to: dateRange.date_to ? new Date(dateRange.date_to) : undefined,
+    from: dateParams.date_from ? new Date(dateParams.date_from) : undefined,
+    to: dateParams.date_to ? new Date(dateParams.date_to) : undefined,
   }
 
   return (

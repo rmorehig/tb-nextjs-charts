@@ -1,19 +1,38 @@
 import { type ClassValue, clsx } from 'clsx'
 import { format } from 'date-fns/format'
 import { subDays } from 'date-fns/subDays'
-import { useState } from 'react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { twMerge } from 'tailwind-merge'
+import { DateParams } from './types'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function useDateRange() {
-  return useState<{
-    date_from: string | undefined
-    date_to: string | undefined
-  }>({
-    date_from: format(subDays(new Date(), 1), 'yyyy-MM-dd'),
-    date_to: format(new Date(), 'yyyy-MM-dd'),
-  })
+export function useDateParams() {
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const pathname = usePathname()
+
+  const dateParams: DateParams = {
+    date_from:
+      searchParams.get('date_from') ||
+      format(subDays(new Date(), 7), 'yyyy-MM-dd'),
+    date_to: searchParams.get('date_to') || format(new Date(), 'yyyy-MM-dd'),
+  }
+
+  const setDateParams = (dateRange: DateParams) => {
+    const params = new URLSearchParams(searchParams.toString())
+    if (dateRange.date_from) {
+      params.set('date_from', dateRange.date_from)
+    }
+
+    if (dateRange.date_to) {
+      params.set('date_to', dateRange.date_to)
+    }
+
+    router.push(`${pathname}?${params.toString()}`)
+  }
+
+  return [dateParams, setDateParams] as const
 }
