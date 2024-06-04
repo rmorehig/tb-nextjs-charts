@@ -10,8 +10,8 @@ export function TopDevices(params: {
 }) {
   return (
     <DonutChart
-      endpoint="https://api.wadus1.gcp.tinybird.co/v0/pipes/top_devices.json"
-      token={process.env.NEXT_PUBLIC_UNIQUE_VISITORS_TOKEN}
+      endpoint={process.env.NEXT_PUBLIC_TOP_DEVICES_ENDPOINT}
+      token={process.env.NEXT_PUBLIC_TOP_DEVICES_TOKEN}
       index="device"
       categories={['visits']}
       borderRadius="8px"

@@ -8,7 +8,7 @@ export function UniqueVisitors(params: {
 }) {
   return (
     <AreaChart
-      endpoint="https://api.wadus1.gcp.tinybird.co/v0/pipes/kpis.json"
+      endpoint={process.env.NEXT_PUBLIC_UNIQUE_VISITORS_ENDPOINT}
       token={process.env.NEXT_PUBLIC_UNIQUE_VISITORS_TOKEN}
       index="date"
       categories={['visits']}

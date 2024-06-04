@@ -10,7 +10,7 @@ export function TopPages(params: {
 }) {
   return (
     <BarList
-      endpoint="https://api.wadus1.gcp.tinybird.co/v0/pipes/top_pages.json"
+      endpoint={process.env.NEXT_PUBLIC_TOP_PAGES_ENDPOINT}
       token={process.env.NEXT_PUBLIC_TOP_PAGES_TOKEN}
       index="pathname"
       categories={['visits']}
