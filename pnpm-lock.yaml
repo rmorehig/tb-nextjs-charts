@@ -4,7 +4,7 @@ specifiers:
   '@radix-ui/react-icons': ^1.3.0
   '@radix-ui/react-popover': ^1.0.7
   '@radix-ui/react-slot': ^1.0.2
-  '@tinybirdco/charts': ^0.0.6
+  '@tinybirdco/charts': ^0.0.8
   '@types/node': ^20
   '@types/react': ^18
   '@types/react-dom': ^18
@@ -29,7 +29,7 @@ dependencies:
   '@radix-ui/react-icons': 1.3.0_react@18.3.1
   '@radix-ui/react-popover': 1.0.7_ma437sazqanxqsgjws34kond6i
   '@radix-ui/react-slot': 1.0.2_3vdbhqr2ncalcx7opnshezpx3q
-  '@tinybirdco/charts': 0.0.6_nnrd3gsncyragczmpvfhocinkq
+  '@tinybirdco/charts': 0.0.8_nnrd3gsncyragczmpvfhocinkq
   class-variance-authority: 0.7.0
   clsx: 2.1.1
   date-fns: 3.6.0
@@ -693,8 +693,8 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@tinybirdco/charts/0.0.6_nnrd3gsncyragczmpvfhocinkq:
-    resolution: {integrity: sha512-j8evjSQFpmPTrwK+foI99oSGXYcbhcJLkHnig1eGH35KbVtRGY6/wooFDMY//maHtEt2QjuddDseYl9Z+SV0OA==}
+  /@tinybirdco/charts/0.0.8_nnrd3gsncyragczmpvfhocinkq:
+    resolution: {integrity: sha512-pbNbnn5huo8U4npSCdqlUHzxB7OXk7lBL3aTXkmGJ0qHMIOjYTMZIn4ub4y7/LbUy2tCcu9bn8XTF7dgPaiR2g==}
     peerDependencies:
       react: ^18.0.0
       react-dom: '>=16.6.0'
