@@ -1,17 +1,26 @@
 'use client'
 
-import { DateRangePicker } from '@/components/ui/DateRangePicker'
+import { KPIS } from '@/components/Kpi'
+import { LastUsers } from '@/components/LastUsers'
+import { TopBrowsers } from '@/components/TopBrowsers'
+import { TopDevices } from '@/components/TopDevices'
+import { TopSources } from '@/components/TopSources'
+import { Layout, Row } from '@/components/ui/layout'
 import { useDateParams } from '@/lib/utils'
 
 export default function Home() {
-  const [dateParams, setDateParams] = useDateParams()
+  const [dateParams] = useDateParams()
   return (
-    <main className="flex min-h-screen flex-col items-center p-24 gap-8 max-w-[1400px] mx-auto">
-      <div className="flex justify-end w-full">
-        <DateRangePicker dateParams={dateParams} onChange={setDateParams} />
-      </div>
-      <div className="flex gap-8 w-full"></div>
-      <div className="flex gap-8 w-full"></div>
-    </main>
+    <Layout>
+      <KPIS {...dateParams} />
+      <Row>
+        <LastUsers />
+        <TopDevices {...dateParams} />
+      </Row>
+      <Row>
+        <TopSources limit={5} {...dateParams} />
+        <TopBrowsers limit={5} {...dateParams} />
+      </Row>
+    </Layout>
   )
 }
