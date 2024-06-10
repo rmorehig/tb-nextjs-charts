@@ -2,7 +2,6 @@
 
 import { KPIS } from '@/components/Kpi'
 import { LastUsers } from '@/components/LastUsers'
-import { MostVisitedCities } from '@/components/MostVisitedCities'
 import { TopBrowsers } from '@/components/TopBrowsers'
 import { TopDevices } from '@/components/TopDevices'
 import { TopSources } from '@/components/TopSources'
@@ -22,7 +21,6 @@ function Home() {
       <Row>
         <TopSources limit={5} {...dateParams} />
         <TopBrowsers limit={5} {...dateParams} />
-        <MostVisitedCities />
       </Row>
     </Layout>
   )
